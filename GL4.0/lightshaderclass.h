@@ -31,7 +31,7 @@ public:
 	bool Initialize(OpenGLClass*, HWND, char*, char*);
 	void Shutdown(OpenGLClass*);
 	void SetShader(OpenGLClass*);
-	bool SetShaderParameters(OpenGLClass*, float*, float*, float*, int, float*, float*, float*);
+	bool SetShaderParameters(OpenGLClass*, Matrix4f, Matrix4f, Matrix4f, int, float*, float*, float*);
 
 private:
 	bool InitializeShader(char*, char*, OpenGLClass*, HWND);

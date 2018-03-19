@@ -153,12 +153,14 @@ bool GraphicsClass::Frame()
 
 bool GraphicsClass::Render(float rotation)
 {
-	float worldMatrix[16];
-	float viewMatrix[16];
-	float projectionMatrix[16];
+	Matrix4f worldMatrix;
+	Matrix4f viewMatrix;
+	Matrix4f projectionMatrix;
 	float lightDirection[3];
 	float diffuseLightColor[4];
 	float ambientLight[4];
+
+	//Matrices personalizadas
 
 
 	// Clear the buffers to begin the scene.
@@ -168,9 +170,9 @@ bool GraphicsClass::Render(float rotation)
 	m_Camera->Render();
 
 	// Get the world, view, and projection matrices from the opengl and camera objects.
-	m_OpenGL->GetWorldMatrix(worldMatrix);
-	m_Camera->GetViewMatrix(viewMatrix);
-	m_OpenGL->GetProjectionMatrix(projectionMatrix);
+	m_OpenGL->GetWorldMatrix(&worldMatrix);
+	m_Camera->GetViewMatrix(&viewMatrix);
+	m_OpenGL->GetProjectionMatrix(&projectionMatrix);
 
 	// Get the light properties.
 	m_Light->GetDirection(lightDirection);
@@ -178,7 +180,7 @@ bool GraphicsClass::Render(float rotation)
 	m_Light->GetAmbientLight(ambientLight);
 
 	// Rotate the world matrix by the rotation value so that the triangle will spin.
-	m_OpenGL->MatrixRotationY(worldMatrix, rotation);
+	MatrixRotationY(&worldMatrix, rotation);
 
 	// Set the light shader as the current shader program and set the matrices that it will use for rendering.
 	m_LightShader->SetShader(m_OpenGL);

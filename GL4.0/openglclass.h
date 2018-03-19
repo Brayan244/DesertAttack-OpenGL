@@ -3,7 +3,7 @@
 ////////////////////////////////////////////////////////////////////////////////
 #ifndef _OPENGLCLASS_H_
 #define _OPENGLCLASS_H_
-
+#include "Matrix.h"
 
 /////////////
 // LINKING //
@@ -17,6 +17,8 @@
 #include <windows.h>
 #include <gl\gl.h>
 #include <math.h>
+
+
 
 
 /////////////
@@ -106,15 +108,15 @@ public:
 	void BeginScene(float, float, float, float);
 	void EndScene();
 
-	void GetWorldMatrix(float*);
-	void GetProjectionMatrix(float*);
+	void GetWorldMatrix(Matrix4f*);
+	void GetProjectionMatrix(Matrix4f*);
 	void GetVideoCardInfo(char*);
 
 	void BuildIdentityMatrix(float*);
 	void BuildPerspectiveFovLHMatrix(float*, float, float, float, float);
-	void MatrixRotationY(float*, float);
+	/*void MatrixRotationY(float*, float);
 	void MatrixTranslation(float*, float, float, float);
-	void MatrixMultiply(float*, float*, float*);
+	void MatrixMultiply(float*, float*, float*);*/
 
 private:
 	bool LoadExtensionList();

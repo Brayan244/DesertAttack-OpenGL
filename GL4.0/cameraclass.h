@@ -9,6 +9,7 @@
 // INCLUDES //
 //////////////
 #include <math.h>
+#include "Matrix.h"
 
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -31,11 +32,11 @@ public:
 	void SetRotation(float, float, float);
 
 	void Render();
-	void GetViewMatrix(float*);
+	void GetViewMatrix(Matrix4f*);
 
 private:
-	void MatrixRotationYawPitchRoll(float*, float, float, float);
-	void TransformCoord(VectorType&, float*);
+	void MatrixRotationYawPitchRoll(Matrix4f, float, float, float);
+	void TransformCoord(VectorType&, Matrix4f);
 	void BuildViewMatrix(VectorType, VectorType, VectorType);
 
 private:
