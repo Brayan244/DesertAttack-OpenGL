@@ -53,6 +53,10 @@ void LightShaderClass::SetShader(OpenGLClass* OpenGL)
 	return;
 }
 
+void LightShaderClass::UnsetShader(OpenGLClass* OpenGL)
+{
+	OpenGL->glUseProgram(0);
+}
 
 bool LightShaderClass::InitializeShader(char* vsFilename, char* fsFilename, OpenGLClass* OpenGL, HWND hwnd)
 {

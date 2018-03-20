@@ -156,6 +156,7 @@ bool GraphicsClass::Render(float rotation)
 	Matrix4f worldMatrix;
 	Matrix4f viewMatrix;
 	Matrix4f projectionMatrix;
+	Matrix4f translation;
 	float lightDirection[3];
 	float diffuseLightColor[4];
 	float ambientLight[4];
@@ -180,7 +181,10 @@ bool GraphicsClass::Render(float rotation)
 	m_Light->GetAmbientLight(ambientLight);
 
 	// Rotate the world matrix by the rotation value so that the triangle will spin.
-	MatrixRotationY(&worldMatrix, rotation);
+	MatrixRotationY(&worldMatrix, -rotation);
+	MatrixTranslation(&translation, 2, 0, 0);
+	
+	worldMatrix = translation * worldMatrix;
 
 	// Set the light shader as the current shader program and set the matrices that it will use for rendering.
 	m_LightShader->SetShader(m_OpenGL);
@@ -188,7 +192,21 @@ bool GraphicsClass::Render(float rotation)
 
 	// Render the model using the light shader.
 	m_Model->Render(m_OpenGL);
+	m_LightShader->UnsetShader(m_OpenGL);
+
+	MatrixRotationX(&worldMatrix, rotation * 2);
+	MatrixTranslation(&translation, 0, -2, 0);
+
+	worldMatrix = translation * worldMatrix;
+
+	m_LightShader->SetShader(m_OpenGL);
+	m_LightShader->SetShaderParameters(m_OpenGL, worldMatrix, viewMatrix, projectionMatrix, 0, lightDirection, diffuseLightColor, ambientLight);
 	
+
+	// Render the model using the light shader.
+	m_Model->Render(m_OpenGL);
+	m_LightShader->UnsetShader(m_OpenGL);
+
 	// Present the rendered scene to the screen.
 	m_OpenGL->EndScene();
 

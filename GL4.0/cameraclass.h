@@ -35,7 +35,7 @@ public:
 	void GetViewMatrix(Matrix4f*);
 
 private:
-	void MatrixRotationYawPitchRoll(Matrix4f, float, float, float);
+	void MatrixRotationYawPitchRoll(Matrix4f*, float, float, float);
 	void TransformCoord(VectorType&, Matrix4f);
 	void BuildViewMatrix(VectorType, VectorType, VectorType);
 

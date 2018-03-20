@@ -1,7 +1,7 @@
 #ifndef _Matrix4f_
 #define _Matrix4f_
 
-#include "openglclass.h"
+
 #include "Vector.h"
 
 #include <iostream>

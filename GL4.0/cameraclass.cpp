@@ -72,7 +72,7 @@ void CameraClass::Render()
 	roll  = m_rotationZ * 0.0174532925f;
 
 	// Create the rotation matrix from the yaw, pitch, and roll values.
-	MatrixRotationYawPitchRoll(rotationMatrix, yaw, pitch, roll);
+	MatrixRotationYawPitchRoll(&rotationMatrix, yaw, pitch, roll);
 
 	// Transform the lookAt and up vector by the rotation matrix so the view is correctly rotated at the origin.
 	TransformCoord(lookAt, rotationMatrix);
@@ -90,7 +90,7 @@ void CameraClass::Render()
 }
 
 
-void CameraClass::MatrixRotationYawPitchRoll(Matrix4f matrix, float yaw, float pitch, float roll)
+void CameraClass::MatrixRotationYawPitchRoll(Matrix4f* matrix, float yaw, float pitch, float roll)
 {
 	float cYaw, cPitch, cRoll, sYaw, sPitch, sRoll;
 
@@ -105,17 +105,17 @@ void CameraClass::MatrixRotationYawPitchRoll(Matrix4f matrix, float yaw, float p
 	sRoll = sinf(roll);
 
 	// Calculate the yaw, pitch, roll rotation matrix.
-	matrix.elementos[0] = (cRoll * cYaw) + (sRoll * sPitch * sYaw);
-	matrix.elementos[1] = (sRoll * cPitch);
-	matrix.elementos[2] = (cRoll * -sYaw) + (sRoll * sPitch * cYaw);
+	matrix->elementos[0] = (cRoll * cYaw) + (sRoll * sPitch * sYaw);
+	matrix->elementos[1] = (sRoll * cPitch);
+	matrix->elementos[2] = (cRoll * -sYaw) + (sRoll * sPitch * cYaw);
 	
-	matrix.elementos[3] = (-sRoll * cYaw) + (cRoll * sPitch * sYaw);
-	matrix.elementos[4] = (cRoll * cPitch);
-	matrix.elementos[5] = (sRoll * sYaw) + (cRoll * sPitch * cYaw);
+	matrix->elementos[3] = (-sRoll * cYaw) + (cRoll * sPitch * sYaw);
+	matrix->elementos[4] = (cRoll * cPitch);
+	matrix->elementos[5] = (sRoll * sYaw) + (cRoll * sPitch * cYaw);
 	
-	matrix.elementos[6] = (cPitch * sYaw);
-	matrix.elementos[7] = -sPitch;
-	matrix.elementos[8] = (cPitch * cYaw);
+	matrix->elementos[6] = (cPitch * sYaw);
+	matrix->elementos[7] = -sPitch;
+	matrix->elementos[8] = (cPitch * cYaw);
 
 	return;
 }

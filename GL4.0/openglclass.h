@@ -3,7 +3,7 @@
 ////////////////////////////////////////////////////////////////////////////////
 #ifndef _OPENGLCLASS_H_
 #define _OPENGLCLASS_H_
-#include "Matrix.h"
+
 
 /////////////
 // LINKING //
@@ -17,6 +17,7 @@
 #include <windows.h>
 #include <gl\gl.h>
 #include <math.h>
+#include "Matrix.h"
 
 
 
