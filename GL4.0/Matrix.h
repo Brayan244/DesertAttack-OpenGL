@@ -11,9 +11,8 @@ using namespace std;
 class Matrix4f
 {
 public:
-	float elementos[16];
-	bool  transposicion;
-
+	float elements[16];
+	
 public: 
 	Matrix4f();
 	~Matrix4f();
@@ -21,15 +20,16 @@ public:
 public:
 	Matrix4f	CargarIdentidad();
 	Matrix4f	operator * (float);
-	Vector		operator * (Vector);
 	Matrix4f	operator * (Matrix4f);
-	Matrix4f	Transponer();
+	Vector		operator * (Vector);
 	void		operator = (Matrix4f);
-	void		LlenaElementos(float*);
-	
+	void		SetElements(float*);
+	float*		GetElements();
+	float*		operator [] (int);
+
 
 private:
-	void IniciaMatriz();
+	void InitializeMatrix();
 	float* VectorToMatrix4f(Vector);
 	
 };

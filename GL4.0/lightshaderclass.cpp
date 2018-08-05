@@ -321,7 +321,7 @@ bool LightShaderClass::SetShaderParameters(OpenGLClass* OpenGL, Matrix4f worldMa
 	{
 		return false;
 	}
-	OpenGL->glUniformMatrix4fv(location, 1, false, worldMatrix.elementos);
+	OpenGL->glUniformMatrix4fv(location, 1, false, worldMatrix.GetElements());
 
 	// Set the view matrix in the vertex shader.
 	location = OpenGL->glGetUniformLocation(m_shaderProgram, "viewMatrix");
@@ -329,7 +329,7 @@ bool LightShaderClass::SetShaderParameters(OpenGLClass* OpenGL, Matrix4f worldMa
 	{
 		return false;
 	}
-	OpenGL->glUniformMatrix4fv(location, 1, false, viewMatrix.elementos);
+	OpenGL->glUniformMatrix4fv(location, 1, false, viewMatrix.GetElements());
 
 	// Set the projection matrix in the vertex shader.
 	location = OpenGL->glGetUniformLocation(m_shaderProgram, "projectionMatrix");
@@ -337,7 +337,7 @@ bool LightShaderClass::SetShaderParameters(OpenGLClass* OpenGL, Matrix4f worldMa
 	{
 		return false;
 	}
-	OpenGL->glUniformMatrix4fv(location, 1, false, projectionMatrix.elementos);
+	OpenGL->glUniformMatrix4fv(location, 1, false, projectionMatrix.GetElements());
 
 	// Set the texture in the pixel shader to use the data from the first texture unit.
 	location = OpenGL->glGetUniformLocation(m_shaderProgram, "shaderTexture");

@@ -105,17 +105,17 @@ void CameraClass::MatrixRotationYawPitchRoll(Matrix4f* matrix, float yaw, float 
 	sRoll = sinf(roll);
 
 	// Calculate the yaw, pitch, roll rotation matrix.
-	matrix->elementos[0] = (cRoll * cYaw) + (sRoll * sPitch * sYaw);
-	matrix->elementos[1] = (sRoll * cPitch);
-	matrix->elementos[2] = (cRoll * -sYaw) + (sRoll * sPitch * cYaw);
+	matrix->elements[0] = (cRoll * cYaw) + (sRoll * sPitch * sYaw);
+	matrix->elements[1] = (sRoll * cPitch);
+	matrix->elements[2] = (cRoll * -sYaw) + (sRoll * sPitch * cYaw);
 	
-	matrix->elementos[3] = (-sRoll * cYaw) + (cRoll * sPitch * sYaw);
-	matrix->elementos[4] = (cRoll * cPitch);
-	matrix->elementos[5] = (sRoll * sYaw) + (cRoll * sPitch * cYaw);
+	matrix->elements[3] = (-sRoll * cYaw) + (cRoll * sPitch * sYaw);
+	matrix->elements[4] = (cRoll * cPitch);
+	matrix->elements[5] = (sRoll * sYaw) + (cRoll * sPitch * cYaw);
 	
-	matrix->elementos[6] = (cPitch * sYaw);
-	matrix->elementos[7] = -sPitch;
-	matrix->elementos[8] = (cPitch * cYaw);
+	matrix->elements[6] = (cPitch * sYaw);
+	matrix->elements[7] = -sPitch;
+	matrix->elements[8] = (cPitch * cYaw);
 
 	return;
 }
@@ -126,10 +126,10 @@ void CameraClass::TransformCoord(VectorType& vector, Matrix4f matrix)
 	float x, y, z;
 
 
-	// Transform the vector by the 3x3 matrix.elementos.
-	x = (vector.x * matrix.elementos[0]) + (vector.y * matrix.elementos[3]) + (vector.z * matrix.elementos[6]);
-	y = (vector.x * matrix.elementos[1]) + (vector.y * matrix.elementos[4]) + (vector.z * matrix.elementos[7]);
-	z = (vector.x * matrix.elementos[2]) + (vector.y * matrix.elementos[5]) + (vector.z * matrix.elementos[8]);
+	// Transform the vector by the 3x3 matrix.elements.
+	x = (vector.x * matrix.elements[0]) + (vector.y * matrix.elements[3]) + (vector.z * matrix.elements[6]);
+	y = (vector.x * matrix.elements[1]) + (vector.y * matrix.elements[4]) + (vector.z * matrix.elements[7]);
+	z = (vector.x * matrix.elements[2]) + (vector.y * matrix.elements[5]) + (vector.z * matrix.elements[8]);
 
 	// Store the result in the reference.
 	vector.x = x;
@@ -205,25 +205,25 @@ void CameraClass::BuildViewMatrix(VectorType position, VectorType lookAt, Vector
 
 void CameraClass::GetViewMatrix(Matrix4f* matrix)
 {
-	matrix->elementos[0]  = m_viewMatrix[0];
-	matrix->elementos[1]  = m_viewMatrix[1];
-	matrix->elementos[2]  = m_viewMatrix[2];
-	matrix->elementos[3]  = m_viewMatrix[3];
+	matrix->elements[0]  = m_viewMatrix[0];
+	matrix->elements[1]  = m_viewMatrix[1];
+	matrix->elements[2]  = m_viewMatrix[2];
+	matrix->elements[3]  = m_viewMatrix[3];
 
-	matrix->elementos[4]  = m_viewMatrix[4];
-	matrix->elementos[5]  = m_viewMatrix[5];
-	matrix->elementos[6]  = m_viewMatrix[6];
-	matrix->elementos[7]  = m_viewMatrix[7];
+	matrix->elements[4]  = m_viewMatrix[4];
+	matrix->elements[5]  = m_viewMatrix[5];
+	matrix->elements[6]  = m_viewMatrix[6];
+	matrix->elements[7]  = m_viewMatrix[7];
 
-	matrix->elementos[8]  = m_viewMatrix[8];
-	matrix->elementos[9]  = m_viewMatrix[9];
-	matrix->elementos[10] = m_viewMatrix[10];
-	matrix->elementos[11] = m_viewMatrix[11];
+	matrix->elements[8]  = m_viewMatrix[8];
+	matrix->elements[9]  = m_viewMatrix[9];
+	matrix->elements[10] = m_viewMatrix[10];
+	matrix->elements[11] = m_viewMatrix[11];
 
-	matrix->elementos[12] = m_viewMatrix[12];
-	matrix->elementos[13] = m_viewMatrix[13];
-	matrix->elementos[14] = m_viewMatrix[14];
-	matrix->elementos[15] = m_viewMatrix[15];
+	matrix->elements[12] = m_viewMatrix[12];
+	matrix->elements[13] = m_viewMatrix[13];
+	matrix->elements[14] = m_viewMatrix[14];
+	matrix->elements[15] = m_viewMatrix[15];
 
 	return;
 }

@@ -492,52 +492,14 @@ bool OpenGLClass::LoadExtensionList()
 
 void OpenGLClass::GetWorldMatrix(Matrix4f* matrix)
 {
-	matrix->elementos[0] = m_worldMatrix[0];
-	matrix->elementos[1]  = m_worldMatrix[1];
-	matrix->elementos[2]  = m_worldMatrix[2];
-	matrix->elementos[3]  = m_worldMatrix[3];
-	
-	matrix->elementos[4]  = m_worldMatrix[4];
-	matrix->elementos[5]  = m_worldMatrix[5];
-	matrix->elementos[6]  = m_worldMatrix[6];
-	matrix->elementos[7]  = m_worldMatrix[7];
-	
-	matrix->elementos[8]  = m_worldMatrix[8];
-	matrix->elementos[9]  = m_worldMatrix[9];
-	matrix->elementos[10] = m_worldMatrix[10];
-	matrix->elementos[11] = m_worldMatrix[11];
-	
-	matrix->elementos[12] = m_worldMatrix[12];
-	matrix->elementos[13] = m_worldMatrix[13];
-	matrix->elementos[14] = m_worldMatrix[14];
-	matrix->elementos[15] = m_worldMatrix[15];
-
+	matrix->SetElements(m_worldMatrix);
 	return;
 }
 
 
 void OpenGLClass::GetProjectionMatrix(Matrix4f* matrix)
 {
-	matrix->elementos[0]  = m_projectionMatrix[0];
-	matrix->elementos[1]  = m_projectionMatrix[1];
-	matrix->elementos[2]  = m_projectionMatrix[2];
-	matrix->elementos[3]  = m_projectionMatrix[3];
-
-	matrix->elementos[4]  = m_projectionMatrix[4];
-	matrix->elementos[5]  = m_projectionMatrix[5];
-	matrix->elementos[6]  = m_projectionMatrix[6];
-	matrix->elementos[7]  = m_projectionMatrix[7];
-
-	matrix->elementos[8]  = m_projectionMatrix[8];
-	matrix->elementos[9]  = m_projectionMatrix[9];
-	matrix->elementos[10] = m_projectionMatrix[10];
-	matrix->elementos[11] = m_projectionMatrix[11];
-
-	matrix->elementos[12] = m_projectionMatrix[12];
-	matrix->elementos[13] = m_projectionMatrix[13];
-	matrix->elementos[14] = m_projectionMatrix[14];
-	matrix->elementos[15] = m_projectionMatrix[15];
-
+	matrix->SetElements(m_projectionMatrix);
 	return;
 }
 
@@ -551,6 +513,7 @@ void OpenGLClass::GetVideoCardInfo(char* cardName)
 
 void OpenGLClass::BuildIdentityMatrix(float* matrix)
 {
+
 	matrix[0]  = 1.0f;
 	matrix[1]  = 0.0f;
 	matrix[2]  = 0.0f;
