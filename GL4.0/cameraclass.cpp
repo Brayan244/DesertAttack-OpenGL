@@ -127,9 +127,9 @@ void CameraClass::TransformCoord(VectorType& vector, Matrix4f matrix)
 
 
 	// Transform the vector by the 3x3 matrix.elements.
-	x = (vector.x * matrix.elements[0]) + (vector.y * matrix.elements[3]) + (vector.z * matrix.elements[6]);
-	y = (vector.x * matrix.elements[1]) + (vector.y * matrix.elements[4]) + (vector.z * matrix.elements[7]);
-	z = (vector.x * matrix.elements[2]) + (vector.y * matrix.elements[5]) + (vector.z * matrix.elements[8]);
+	x = (vector.x * matrix[0]) + (vector.y * matrix[3]) + (vector.z * matrix[6]);
+	y = (vector.x * matrix[1]) + (vector.y * matrix[4]) + (vector.z * matrix[7]);
+	z = (vector.x * matrix[2]) + (vector.y * matrix[5]) + (vector.z * matrix[8]);
 
 	// Store the result in the reference.
 	vector.x = x;
@@ -205,25 +205,6 @@ void CameraClass::BuildViewMatrix(VectorType position, VectorType lookAt, Vector
 
 void CameraClass::GetViewMatrix(Matrix4f* matrix)
 {
-	matrix->elements[0]  = m_viewMatrix[0];
-	matrix->elements[1]  = m_viewMatrix[1];
-	matrix->elements[2]  = m_viewMatrix[2];
-	matrix->elements[3]  = m_viewMatrix[3];
-
-	matrix->elements[4]  = m_viewMatrix[4];
-	matrix->elements[5]  = m_viewMatrix[5];
-	matrix->elements[6]  = m_viewMatrix[6];
-	matrix->elements[7]  = m_viewMatrix[7];
-
-	matrix->elements[8]  = m_viewMatrix[8];
-	matrix->elements[9]  = m_viewMatrix[9];
-	matrix->elements[10] = m_viewMatrix[10];
-	matrix->elements[11] = m_viewMatrix[11];
-
-	matrix->elements[12] = m_viewMatrix[12];
-	matrix->elements[13] = m_viewMatrix[13];
-	matrix->elements[14] = m_viewMatrix[14];
-	matrix->elements[15] = m_viewMatrix[15];
-
+	matrix->SetElements(m_viewMatrix);
 	return;
 }

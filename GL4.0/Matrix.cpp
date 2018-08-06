@@ -99,12 +99,12 @@ float* Matrix4f::GetElements()
 	return elements;
 }
 
-float * Matrix4f::operator[](int index)
+float& Matrix4f::operator[](int index)
 {
 	if (index < 0 || index > 15)
-		return NULL;
+		return elements[0];
 
-	return &elements[index];
+	return elements[index];
 }
 
 void MatrixRotationX(Matrix4f* matrix, float angle)

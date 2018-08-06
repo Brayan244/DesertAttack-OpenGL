@@ -25,7 +25,7 @@ public:
 	void		operator = (Matrix4f);
 	void		SetElements(float*);
 	float*		GetElements();
-	float*		operator [] (int);
+	float&		operator [] (int);
 
 
 private:
